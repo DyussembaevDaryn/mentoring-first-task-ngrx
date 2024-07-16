@@ -1,1 +1,7 @@
-<p>user-card works!</p>
+<p>id:{{user.id}}</p>
+<p>name:{{user.name}}</p>
+<p>email:{{user.email}}</p>
+<p>username:{{user.username}}</p>
+<p>phone:{{user.phone}}</p>
+<button (click)="userDelete()" mat-button color="warn" >delete</button>
+<button (click)="userEdit(user)" mat-button color="accent" >edit</button>

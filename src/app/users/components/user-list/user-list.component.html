@@ -1,1 +1,4 @@
-<p>user-list works!</p>
+<button mat-button mat-raised-button color="accent" (click)="openDialog()">Добавить пользователья</button>
+<div *ngFor="let user of users$ | async">
+  <app-user-card [user]="user" (deleteUser)="deleteUsers($event)" (editUsers)="openEditUser($event)" ></app-user-card>
+</div>
