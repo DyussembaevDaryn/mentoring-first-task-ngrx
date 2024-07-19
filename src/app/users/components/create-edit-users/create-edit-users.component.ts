@@ -27,11 +27,12 @@ import {MatButton} from "@angular/material/button";
   styleUrl: './create-edit-users.component.scss'
 })
 export class CreateEditUsersComponent {
-  userForm!: FormGroup;
-  isEdit!: boolean;
+  public readonly userForm: FormGroup;
+  public isEdit: boolean;
   constructor(public dialogRef: MatDialogRef<CreateEditUsersComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any,
-              private fb :FormBuilder,) {
+              @Inject(MAT_DIALOG_DATA)
+              public data: any,
+              private fb: FormBuilder) {
     this.isEdit = data.isEdit;
     this.userForm = this.fb.group({
       id: [null],

@@ -1,5 +1,5 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { inject } from '@angular/core';
+import {inject} from "@angular/core";
 import { catchError, map, switchMap, of } from 'rxjs';
 import { UserApiService } from '../users/services/user-api.service';
 import { LocalStorageService } from "../users/services/local-storage.service";

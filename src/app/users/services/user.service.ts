@@ -8,17 +8,12 @@ import {LocalStorageService} from "./local-storage.service";
   providedIn: 'root'
 })
 export class UserService {
-  private usersApi:UserApiService = inject(UserApiService)
   public usersSubject$ = new BehaviorSubject<User[]>([]);
-  public readonly users$ = this.usersSubject$.pipe();
-  private localStorageService: LocalStorageService = inject(LocalStorageService)
-  private readonly USERS_KEY = "users"
+  public readonly users$ = this.usersSubject$.asObservable();
+  private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private readonly USERS_KEY = 'users';
 
-  constructor() {
-    this.loadUsers()
-  };
-
-  public loadUsers() {
+  constructor(private usersApi: UserApiService) {
     const storedUsers = this.localStorageService.getItem<User[]>(this.USERS_KEY);
     if (storedUsers && Array.isArray(storedUsers) && storedUsers.length > 0) {
       this.usersSubject$.next(storedUsers);
@@ -29,6 +24,7 @@ export class UserService {
       });
     }
   }
+
 
   public deleteUsers(id: number) {
     const updatedUsers = this.usersSubject$.value.filter(user => user.id !== id);
@@ -58,3 +54,4 @@ export class UserService {
     this.localStorageService.setItem(this.USERS_KEY, updatedUsers);
   }
 }
+

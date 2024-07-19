@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalStorageService {
-  setItem(key: string, value: any){
-    localStorage.setItem(key, JSON.stringify(value));
+  setItem(key:string,value:any){
+    localStorage.setItem(key,JSON.stringify(value));
   }
 
 
@@ -14,9 +14,5 @@ export class LocalStorageService {
     return data ? JSON.parse(data) as T : null;
 
   }
-
-  removeItem(key: string): void {
-    localStorage.removeItem(key);
-
-  }
+  
 }
